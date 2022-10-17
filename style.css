@@ -50,17 +50,17 @@
 //  LIGHT/DARK THEME 
 */
 :root {
+   color-scheme: light;
+   /* Dark-Mode*/
    --surface-dark: 240 20% 10%; /*hsl(240 20% 10%)*/
    --text-dark: 0 0% 90%; /*hsl(0, 0%, 90%)*/
-
+   /* Light-Mode*/
    --surface-light: hsl(0, 10%, 90%);
    --text-light: hsl(0, 5%, 5%);
-
-   color-scheme: light dark;
    /*
-////////////////////////
-//  CUSTOM PROPERTIES
-*/
+   ////////////////////////
+   //  CUSTOM PROPERTIES
+   */
    --ff-primary: "Lexand Deca", system-ui;
    --ff-secondary: "Big Shoulders Display", system-ui;
 
@@ -78,15 +78,26 @@
 }
 @media screen and (prefers-color-scheme: dark) {
    :root {
+      color-scheme: dark;
       --surface: var(--surface-dark);
       --text: var(--text-dark);
    }
 }
 @media screen and (prefers-color-scheme: light) {
    :root {
+      color-scheme: light;
       --surface: var(--surface-light);
       --text: var(--text-light);
    }
+}
+
+[color-scheme="light"] {
+   --surface: var(--surface-dark);
+   --text: var(--text-dark);
+}
+[color-scheme="dark"] {
+   --surface: var(--surface-light);
+   --text: var(--text-light);
 }
 
 /*
@@ -167,7 +178,7 @@ body {
    padding-inline: var(--spacer);
 
    border-radius: 100px;
-   border: 2px solid white;
+   border: 2px solid hsl(var(--white));
    cursor: pointer;
 }
 .btn:hover,
